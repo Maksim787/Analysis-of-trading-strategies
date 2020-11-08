@@ -78,7 +78,7 @@ Each order have:
 You can change ```duration```, ```take_profit``` and ```stop_loss``` attributes. But you have read-only access to ```direction``` attribute.
 
 Example of creating and testing your strategy:
-'''strategy_to_test.py```:
+```strategy_to_test.py```:
 ```python
 import random
 from random import random as rnd
