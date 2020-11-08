@@ -12,8 +12,14 @@ pip install matplotlib
 pip install yfinance
 ```
  
-## How to use test system?
+## Usage
 Open main.py file
+
+Take any stock and period to analyze. You can find it on [yahoo finance](https://finance.yahoo.com/)
+```python
 stock = "SNP"
 start_date = "2010-01-01"
 end_date = "2020-10-31"
+```
+
+Go to 
