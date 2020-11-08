@@ -22,4 +22,11 @@ start_date = "2010-01-01"
 end_date = "2020-10-31"
 ```
 
-Go to 
+Instantiate a testing system
+```python
+test = Testing(stock, start_date, end_date)
+```
+Plot market prices to verify that it is downloaded correctly
+```python
+test.plot_price()
+```
