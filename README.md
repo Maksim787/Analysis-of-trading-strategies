@@ -13,7 +13,7 @@ pip install yfinance
 ```
  
 ## Usage
-#### Testing already written strategy
+### Testing already written strategy
 Open main.py file
 
 Take any stock and period to analyze. You can find it on [yahoo finance](https://finance.yahoo.com/)
@@ -38,7 +38,7 @@ randStrategy = Random()
 test.plot_strategy(randStrategy)
 ```
 
-#### Writing your own strategy
+### Writing your own strategy
 Open strategy_to_test.py file
 
 Inherit strategy from Strategy class. If you want to write your ```__init__``` method, write ```super().__init__()``` in the method firstly:
@@ -50,7 +50,13 @@ class YourStrategyName(Strategy):
 
 Implement two methods: ```make_decision(self)``` (mandatory), ```get_name(self)``` (optional)
 
-'''get_name(self)''' returns a string - displayed strategy name
-'''make_decision''' returns an '''Order''' to complete in the market and closes some of the previous orders
+#### make_decision method
+You have an access to:
+- ```self.price_history``` - list of previous prices
+- ```self.curr_price``` - current price at the market
+- '''self.orders''' - list of holded orders
 
+Method returns ```None``` (if you don't do anything), ```Order``` object (if you place one order) or list of '''Order''' objects if you place several orders
+
+#### '''Order''' object description:
 
