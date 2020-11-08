@@ -13,6 +13,7 @@ pip install yfinance
 ```
  
 ## Usage
+#### Testing already written strategy
 Open main.py file
 
 Take any stock and period to analyze. You can find it on [yahoo finance](https://finance.yahoo.com/)
@@ -29,4 +30,20 @@ test = Testing(stock, start_date, end_date)
 Plot market prices to verify that it is downloaded correctly
 ```python
 test.plot_price()
+```
+
+Instantiate one of the builded strategies and plot it's profit.
+```python
+randStrategy = Random()
+test.plot_strategy(randStrategy)
+```
+
+#### Writing your own strategy
+Open strategy_to_test.py file
+
+Inherit strategy from Strategy class. If you want to write your __init__ method, write also super().__init__() firstly:
+```python
+class YourStrategyName(Strategy):
+    def __init__(self):
+        super().__init__()
 ```
