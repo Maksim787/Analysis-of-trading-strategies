@@ -14,7 +14,7 @@ pip install yfinance
  
 ## Usage
 ### Testing already written strategy
-Open main.py file
+Open ```main.py``` file
 
 Take any stock and period to analyze. You can find it on [yahoo finance](https://finance.yahoo.com/)
 ```python
@@ -39,9 +39,9 @@ test.plot_strategy(randStrategy)
 ```
 
 ### Writing your own strategy
-Open strategy_to_test.py file
+Open ```strategy_to_test.py``` file
 
-Inherit strategy from Strategy class. If you want to write your ```__init__``` method, write ```super().__init__()``` in the method firstly:
+Inherit strategy from ```Strategy``` class. If you want to write your ```__init__``` method, write ```super().__init__()``` in the method firstly:
 ```python
 class YourStrategyName(Strategy):
     def __init__(self):
@@ -56,8 +56,10 @@ You have an access to:
 - ```self.curr_price``` - current price at the market
 - ```self.orders``` - list of holded orders
 
-Method returns ```None``` (if you don't do anything), ```Order``` object (if you place one order) or list of '''Order''' objects if you place several orders
-Be carefull. You do not need to add orders to self.orders, because when you return an order, testing system do it automatically.
+Method returns ```None``` (if you don't do anything), ```Order``` object (if you place one order) or list of '''Order''' objects if you place several orders.
+
+Be carefull. You do not need to add orders to ```self.orders```, because when you return an order, testing system do it automatically.
+
 #### Order class:
 Creating order object:
 ```python
@@ -74,3 +76,26 @@ Each order have:
 - close() method which closes your order
 
 You can change ```duration```, ```take_profit``` and ```stop_loss``` attributes. But you have read-only access to ```direction``` attribute.
+
+Example of creating and testing your strategy:
+
+```python
+from random import random as rnd
+
+
+class Random(Strategy):
+    def __init__(self):
+        super().__init__()
+        self.name = 'Random Strategy'
+        random.seed(1)
+
+    def close(self):
+        for order in self.orders:
+            if rnd() < 0.1:
+                order.close()
+
+    def make_decision(self):
+        self.close()
+        if rnd() < 0.5:
+            return Order(random.choice([-1, 1]))
+```
