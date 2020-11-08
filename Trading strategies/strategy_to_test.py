@@ -10,16 +10,14 @@ class Random(Strategy):
         self.name = 'Random Strategy'
         random.seed(1)
 
-    def close(self):
+    def make_decision(self):
+        # closing orders
         for order in self.orders:
             if rnd() < 0.1:
                 order.close()
-
-    def make_decision(self):
-        self.close()
+        # opening new order
         if rnd() < 0.5:
             return Order(random.choice([-1, 1]))
-        return None
 
 
 class Trend(Strategy):
@@ -112,7 +110,7 @@ class DeviationMean(Deviation):
 class MovingAverage(Strategy):
     def __init__(self, ma_peirod=15, duration=15):
         super().__init__()
-        self.name = 'Moving Average'
+        self.name = 'Moving Average Strategy'
         self.duration = duration
         self.ma_period = ma_peirod
 

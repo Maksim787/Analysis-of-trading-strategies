@@ -55,7 +55,7 @@ class Testing:
         plt.fill_between(self.get_dates(),
                          capital, 0, where=(capital < 0),
                          color='red', alpha=0.25, interpolate=True)
-        plt.title(strategy.name)
+        plt.title(strategy.get_name())
         plt.xlabel("Time")
         plt.ylabel("Yield in %")
         plt.show()

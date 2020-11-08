@@ -2,10 +2,9 @@ from strategy_to_test import *
 from testing import *
 
 stock = "SNP"
+# stock = "XIACY"
 start_date = "2010-01-01"
 end_date = "2020-10-31"
-
-# stock = "XIACY"
 
 test = Testing(stock, start_date, end_date)
 test.plot_price()
