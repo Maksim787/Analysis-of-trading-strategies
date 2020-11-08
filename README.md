@@ -48,7 +48,7 @@ class YourStrategyName(Strategy):
         super().__init__()
 ```
 
-Implement two methods: ```make_decision(self)``` (mandatory), ```get_name(self)``` (optional)
+Implement two methods: ```make_decision(self)``` (mandatory), ```get_name(self)``` (optional, you can set attribute self.name in ```__init___``` method)
 
 #### make_decision method
 You have an access to:
@@ -78,24 +78,36 @@ Each order have:
 You can change ```duration```, ```take_profit``` and ```stop_loss``` attributes. But you have read-only access to ```direction``` attribute.
 
 Example of creating and testing your strategy:
-
+'''strategy_to_test.py```:
 ```python
+import random
 from random import random as rnd
 
 
-class Random(Strategy):
+class NewStrategy(Strategy):
     def __init__(self):
         super().__init__()
-        self.name = 'Random Strategy'
+        self.name = 'New Strategy'
         random.seed(1)
 
-    def close(self):
+    def make_decision(self):
+        # closing orders
         for order in self.orders:
             if rnd() < 0.1:
                 order.close()
-
-    def make_decision(self):
-        self.close()
+        # opening new order
         if rnd() < 0.5:
             return Order(random.choice([-1, 1]))
+```
+```main.py```:
+```python
+stock = "SNP"
+start_date = "2010-01-01"
+end_date = "2020-10-31"
+
+test = Testing(stock, start_date, end_date)
+test.plot_price()
+
+newStrategy = NewStrategy()
+test.plot_strategy(newStrategy)
 ```
