@@ -56,7 +56,7 @@ You have an access to:
 - ```self.curr_price``` - current price at the market
 - ```self.orders``` - list of holded orders
 
-Method returns ```None``` (if you don't do anything), ```Order``` object (if you place one order) or list of '''Order''' objects if you place several orders.
+Method returns ```None``` (if you don't do anything), ```Order``` object (if you place one order) or list of ```Order``` objects if you place several orders.
 
 Be carefull. You do not need to add orders to ```self.orders```, because when you return an order, testing system do it automatically.
 
@@ -66,13 +66,13 @@ Creating order object:
 order = Order(direction=1, duration=None, take_profit=None,  stop_loss=None)
 ```
 - ```direction``` - an indicator of buying (1) or selling (-1).
-- ```duration``` - maximum time at what system close your order immediately.
-- ```take_profit``` and ```stop_loss``` - prices when you want to close orders. For example if you buy at 1000$ price you may want to automatically take profit when price reach take_profit=1100$ and stop your losses when price reaches stop_loss=800$. With selling orders it works in the same way.
+- ```duration``` - time from starting date when system close your order immediately.
+- ```take_profit``` and ```stop_loss``` - price levels at you want to close orders. For example, you buy at 1000$ price and want to automatically take profit when price reaches take_profit=1100$ and stop your losses when price reaches stop_loss=800$ (order will be closed). With selling orders it works in the same way.
 
 You have access to your previous orders in self.orders attribute in your Strategy class.
 
 Each order have:
-- property ```days_from_open``` which returns days from the open.
+- ```days_from_open``` property which returns days from the open.
 - close() method which closes your order
 
 You can change ```duration```, ```take_profit``` and ```stop_loss``` attributes. But you have read-only access to ```direction``` attribute.
