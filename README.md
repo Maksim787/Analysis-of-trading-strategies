@@ -41,9 +41,16 @@ test.plot_strategy(randStrategy)
 #### Writing your own strategy
 Open strategy_to_test.py file
 
-Inherit strategy from Strategy class. If you want to write your __init__ method, write also super().__init__() firstly:
+Inherit strategy from Strategy class. If you want to write your ```__init__``` method, write ```super().__init__()``` in the method firstly:
 ```python
 class YourStrategyName(Strategy):
     def __init__(self):
         super().__init__()
 ```
+
+Implement two methods: ```make_decision(self)``` (mandatory), ```get_name(self)``` (optional)
+
+'''get_name(self)''' returns a string - displayed strategy name
+'''make_decision''' returns an '''Order''' to complete in the market and closes some of the previous orders
+
+
