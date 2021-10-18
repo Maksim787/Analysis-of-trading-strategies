@@ -1,6 +1,12 @@
 # Analysis-of-trading-strategies.
 With this program you can simply write your own trading strategy and test it on previous market prices.
 
+Performance examples of different strategies on S&P index:
+![alt text](https://github.com/Maksim787/Analysis-of-trading-strategies/blob/main/Deviation.png)
+![alt text](https://github.com/Maksim787/Analysis-of-trading-strategies/blob/main/Deviation_mean.png)
+![alt text](https://github.com/Maksim787/Analysis-of-trading-strategies/blob/main/ReverseUp.png)
+![alt text](https://github.com/Maksim787/Analysis-of-trading-strategies/blob/main/Trend.png)
+
 ## Installation
 - Download Trading Strategies module
 - Install Python 3
